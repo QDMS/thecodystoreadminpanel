@@ -534,33 +534,33 @@ class _UploadProductFormState extends State<UploadProductForm> {
           hint: const Text('Select a category'),
           items: const [
             DropdownMenuItem(
-              value: 'Cody Cable',
+              value: 'Members',
               child: Text(
-                'Cody Cable',
+                'Members',
               ),
             ),
             DropdownMenuItem(
-              value: 'CBD Edibles',
+              value: "TVs",
               child: Text(
-                'CBD Edibles',
+                "TVs",
               ),
             ),
             DropdownMenuItem(
-              value: 'CBD Oil & Flower',
+              value: "Computers",
               child: Text(
-                'CBD Oil & Flower',
+                'Computers',
               ),
             ),
             DropdownMenuItem(
-              value: 'Vapes',
+              value: 'Network',
               child: Text(
-                'Vapes',
+                'Network',
               ),
             ),
             DropdownMenuItem(
-              value: 'Kratom',
+              value: 'Home Entertainment',
               child: Text(
-                'Kratom',
+                'Home Entertainment',
               ),
             ),
             DropdownMenuItem(
