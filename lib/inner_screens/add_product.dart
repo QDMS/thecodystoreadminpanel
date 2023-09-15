@@ -558,9 +558,9 @@ class _UploadProductFormState extends State<UploadProductForm> {
               ),
             ),
             DropdownMenuItem(
-              value: 'Home Entertainment',
+              value: 'Entertainment',
               child: Text(
-                'Home Entertainment',
+                'Entertainment',
               ),
             ),
             DropdownMenuItem(
