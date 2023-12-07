@@ -9,13 +9,14 @@ import 'package:thecodystoreadminpanel/widgets/text_widget.dart';
 class OrdersWidget extends StatefulWidget {
   const OrdersWidget({
     Key? key,
+    required this.title,
     required this.price,
     required this.totalPrice,
     required this.productId,
     required this.userId,
     required this.imageUrl,
     required this.username,
-    // required this.phoneNumber,
+    required this.phoneNumber,
     required this.quantity,
     required this.orderDate,
   }) : super(key: key);
@@ -25,7 +26,8 @@ class OrdersWidget extends StatefulWidget {
   final String userId;
   final String imageUrl;
   final String username;
-  // final String phoneNumber;
+  final String title;
+  final String phoneNumber;
   final int quantity;
   final Timestamp orderDate;
   @override
@@ -75,6 +77,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    TextWidget(text: widget.title, color: color, isTitle: true,),
                     TextWidget(
                       text:
                           '${widget.quantity}X For \$${widget.price.toStringAsFixed(2)}',
@@ -97,18 +100,13 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                             textSize: 14,
                             isTitle: true,
                           ),
-                          // TextWidget(
-                          //   text: 'From Phone Number:',
-                          //   color: color,
-                          //   textSize: 14,
-                          //   isTitle: true,
-                          // ),
-                          // TextWidget(
-                          //   text: widget.phoneNumber,
-                          //   color: color,
-                          //   textSize: 14,
-                          //   isTitle: true,
-                          // ),
+                          TextWidget(text: " / ", color: color),
+                          TextWidget(
+                            text: widget.phoneNumber,
+                            color: color,
+                            textSize: 14,
+                            isTitle: true,
+                          ),
                         ],
                       ),
                     ),

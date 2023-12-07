@@ -64,6 +64,16 @@ class _SideMenuState extends State<SideMenu> {
             },
             icon: IconlyBold.bag_2,
           ),
+          DrawerListTile(
+            title: "Update Photos",
+            press: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AllOrdersScreen()));
+            },
+            icon: IconlyBold.bag_2,
+          ),
           SwitchListTile(
               title: const Text('Theme'),
               secondary: Icon(themeState.getDarkTheme

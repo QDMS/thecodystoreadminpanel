@@ -32,9 +32,12 @@ class OrdersList extends StatelessWidget {
                     return Column(
                       children: [
                         OrdersWidget(
+                          title: snapshot.data!.docs[index]['title'],
                           imageUrl: snapshot.data!.docs[index]['imageUrl'],
                           totalPrice: snapshot.data!.docs[index]['totalPrice'],
                           price: snapshot.data!.docs[index]['price'],
+                          phoneNumber: snapshot.data!.docs[index]
+                              ['phoneNumber'],
                           productId: snapshot.data!.docs[index]['productId'],
                           userId: snapshot.data!.docs[index]['userId'],
                           quantity: snapshot.data!.docs[index]['quantity'],

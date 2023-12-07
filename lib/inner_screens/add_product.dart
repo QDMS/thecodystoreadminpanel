@@ -33,7 +33,7 @@ class UploadProductForm extends StatefulWidget {
 
 class _UploadProductFormState extends State<UploadProductForm> {
   final _formKey = GlobalKey<FormState>();
-  String _catValue = 'Cody Cable';
+  String _catValue = 'Membership Connections';
   late final TextEditingController _titleController, _priceController;
   int _groupValue = 1;
   bool isPiece = false;
@@ -534,27 +534,27 @@ class _UploadProductFormState extends State<UploadProductForm> {
           hint: const Text('Select a category'),
           items: const [
             DropdownMenuItem(
-              value: 'Members',
+              value: 'Membership Connections',
               child: Text(
-                'Members',
+                'Membership Connections',
               ),
             ),
             DropdownMenuItem(
-              value: "TVs",
+              value: "TV Accessories",
               child: Text(
-                "TVs",
+                "TV Accessories",
               ),
             ),
             DropdownMenuItem(
-              value: "Computers",
+              value: "Computer Accessories",
               child: Text(
-                'Computers',
+                'Computer Accessories',
               ),
             ),
             DropdownMenuItem(
-              value: 'Network',
+              value: 'Network Accessories',
               child: Text(
-                'Network',
+                'Network Accessories',
               ),
             ),
             DropdownMenuItem(

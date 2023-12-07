@@ -597,31 +597,31 @@ class _EditProductScreenState extends State<EditProductScreen> {
         style: TextStyle(color: color),
         items: const [
           DropdownMenuItem<String>(
-            value: 'Cody Cable',
-            child: Text('Cody Cable'),
+            value: 'Membership Connections',
+            child: Text('Membership Connections'),
           ),
           DropdownMenuItem<String>(
-            value: 'CBD Edibles',
+            value: 'TV Accessories',
             child: Text(
-              'CBD Edibles',
+              'TV Accessories',
             ),
           ),
           DropdownMenuItem<String>(
-            value: 'CBD Oil & Flower',
+            value: 'Computer Accessories',
             child: Text(
-              'CBD Oil & Flower',
+              'Computer Accessories',
             ),
           ),
           DropdownMenuItem<String>(
-            value: 'Vapes',
+            value: 'Network Accessories',
             child: Text(
-              'Vapes',
+              'Network Accessories',
             ),
           ),
           DropdownMenuItem<String>(
-            value: 'Kratom',
+            value: 'Home Entertainment',
             child: Text(
-              'Kratom',
+              'Home Entertainment',
             ),
           ),
           DropdownMenuItem<String>(
