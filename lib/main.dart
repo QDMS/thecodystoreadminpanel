@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:thecodystoreadminpanel/inner_screens/add_product.dart';
 import 'package:thecodystoreadminpanel/inner_screens/edit_product.dart';
@@ -56,6 +57,7 @@ class _MyAppState extends State<MyApp> {
             title: 'The Cody Store Admin Panel',
             theme: Styles.themeData(themeProvider.getDarkTheme, context),
             home: const MainScreen(),
+            builder: EasyLoading.init(),
             routes: {
                 UploadProductForm.routeName: (context) =>
                     const UploadProductForm(),

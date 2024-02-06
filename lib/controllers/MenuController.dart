@@ -6,6 +6,8 @@ class MenuController extends ChangeNotifier {
   final GlobalKey<ScaffoldState> _allordersScaffoldKey = GlobalKey<ScaffoldState>();
    final GlobalKey<ScaffoldState> _editProductScaffoldKey =
       GlobalKey<ScaffoldState>();
+       final GlobalKey<ScaffoldState> _uploadBannersScaffoldKey =
+      GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _addProductScaffoldKey =
       GlobalKey<ScaffoldState>();
   // Getters
@@ -14,6 +16,8 @@ class MenuController extends ChangeNotifier {
     // get Edit product screen Scaffold Key
   GlobalKey<ScaffoldState> get getEditProductscaffoldKey =>
       _editProductScaffoldKey;
+       GlobalKey<ScaffoldState> get getUploadBannersscaffoldKey =>
+      _uploadBannersScaffoldKey;
   GlobalKey<ScaffoldState> get getallordersscaffoldKey => _allordersScaffoldKey;
   GlobalKey<ScaffoldState> get getAddProductscaffoldKey => _addProductScaffoldKey;
 
@@ -45,6 +49,13 @@ class MenuController extends ChangeNotifier {
     void controlEditProductsMenu() {
     if (!_editProductScaffoldKey.currentState!.isDrawerOpen) {
       _editProductScaffoldKey.currentState!.openDrawer();
+    }
+  }
+
+  
+    void controlUploadBannersMenu() {
+    if (!_uploadBannersScaffoldKey.currentState!.isDrawerOpen) {
+      _uploadBannersScaffoldKey.currentState!.openDrawer();
     }
   }
 }

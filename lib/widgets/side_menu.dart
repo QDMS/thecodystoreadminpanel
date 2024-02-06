@@ -3,6 +3,7 @@ import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:thecodystoreadminpanel/inner_screens/all_orders.dart';
 import 'package:thecodystoreadminpanel/inner_screens/all_products.dart';
+import 'package:thecodystoreadminpanel/inner_screens/upload_banners.dart';
 import 'package:thecodystoreadminpanel/widgets/text_widget.dart';
 
 import '../providers/dark_theme_provider.dart';
@@ -36,7 +37,7 @@ class _SideMenuState extends State<SideMenu> {
           DrawerListTile(
             title: "Main",
             press: () {
-              Navigator.of(context).pushReplacement(
+              Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => const MainScreen(),
                 ),
@@ -45,9 +46,9 @@ class _SideMenuState extends State<SideMenu> {
             icon: Icons.home_filled,
           ),
           DrawerListTile(
-            title: "View all products",
+            title: "View All Products",
             press: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const AllProductsScreen()));
@@ -55,9 +56,9 @@ class _SideMenuState extends State<SideMenu> {
             icon: Icons.store,
           ),
           DrawerListTile(
-            title: "View all order",
+            title: "View All Order",
             press: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const AllOrdersScreen()));
@@ -65,14 +66,14 @@ class _SideMenuState extends State<SideMenu> {
             icon: IconlyBold.bag_2,
           ),
           DrawerListTile(
-            title: "Update Photos",
+            title: "Upload Banners",
             press: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const AllOrdersScreen()));
+                      builder: (context) => const UploadBannerScreen()));
             },
-            icon: IconlyBold.bag_2,
+            icon: IconlyBold.upload,
           ),
           SwitchListTile(
               title: const Text('Theme'),
