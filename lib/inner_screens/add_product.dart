@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, unused_local_variable
+
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -104,7 +106,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
         });
         _clearForm();
         Fluttertoast.showToast(
-          msg: "Product uploaded succefully",
+          msg: "Product uploaded successfully",
           toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
@@ -113,15 +115,19 @@ class _UploadProductFormState extends State<UploadProductForm> {
           // fontSize: 16.0
         );
       } on FirebaseException catch (error) {
-        GlobalMethods.errorDialog(
-          subtitle: '${error.message}',
-          context: context,
-        );
+        if (mounted) {
+          GlobalMethods.errorDialog(
+            subtitle: error.toString(),
+            context: context,
+          );
+        }
       } catch (error) {
-        GlobalMethods.errorDialog(
-          subtitle: '$error',
-          context: context,
-        );
+        if (mounted) {
+          GlobalMethods.errorDialog(
+            subtitle: '$error',
+            context: context,
+          );
+        }
         setState(() {
           _isLoading = false;
         });
@@ -164,7 +170,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
       ),
     );
     return Scaffold(
-      key: context.read<MenuController>().getAddProductscaffoldKey,
+      key: context.read<CustomMenuController>().getAddProductscaffoldKey,
       drawer: const SideMenu(),
       body: LoadingManager(
         isLoading: _isLoading,
@@ -186,7 +192,9 @@ class _UploadProductFormState extends State<UploadProductForm> {
                     Header(
                       showTextField: false,
                       fct: () {
-                        context.read<MenuController>().controlAddProductsMenu();
+                        context
+                            .read<CustomMenuController>()
+                            .controlAddProductsMenu();
                       },
                       title: 'Add New Product',
                     ),
@@ -258,8 +266,7 @@ class _UploadProductFormState extends State<UploadProductForm> {
                                               }
                                               return null;
                                             },
-                                            inputFormatters: <
-                                                TextInputFormatter>[
+                                            inputFormatters: <TextInputFormatter>[
                                               FilteringTextInputFormatter.allow(
                                                   RegExp(r'[0-9.]')),
                                             ],
@@ -462,7 +469,9 @@ class _UploadProductFormState extends State<UploadProductForm> {
           _pickedImage = selected;
         });
       } else {
-        print('No image selected');
+        if (kDebugMode) {
+          print('No image selected');
+        }
       }
     } else if (kIsWeb) {
       final ImagePicker _picker = ImagePicker();
@@ -474,10 +483,14 @@ class _UploadProductFormState extends State<UploadProductForm> {
           _pickedImage = File('a');
         });
       } else {
-        print('No image selected');
+        if (kDebugMode) {
+          print('No image selected');
+        }
       }
     } else {
-      print('Something went wrong');
+      if (kDebugMode) {
+        print('Something went wrong');
+      }
     }
   }
 
@@ -529,7 +542,9 @@ class _UploadProductFormState extends State<UploadProductForm> {
             setState(() {
               _catValue = value!;
             });
-            print(_catValue);
+            if (kDebugMode) {
+              print(_catValue);
+            }
           },
           hint: const Text('Select a category'),
           items: const [

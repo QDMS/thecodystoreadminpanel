@@ -1,7 +1,7 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:developer';
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -10,17 +10,12 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
-import 'package:thecodystoreadminpanel/controllers/MenuController.dart';
-import 'package:thecodystoreadminpanel/responsive.dart';
 import 'package:thecodystoreadminpanel/services/global_method.dart';
 import 'package:thecodystoreadminpanel/services/utils.dart';
 import 'package:thecodystoreadminpanel/widgets/buttons.dart';
-import 'package:thecodystoreadminpanel/widgets/header.dart';
 import 'package:thecodystoreadminpanel/widgets/loading_manager.dart';
 import 'package:thecodystoreadminpanel/widgets/side_menu.dart';
 import 'package:thecodystoreadminpanel/widgets/text_widget.dart';
-import 'package:uuid/uuid.dart';
 
 class EditProductScreen extends StatefulWidget {
   const EditProductScreen(

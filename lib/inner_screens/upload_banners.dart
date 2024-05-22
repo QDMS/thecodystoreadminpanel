@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -73,7 +75,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
     return Scaffold(
-      key: context.read<MenuController>().getUploadBannersscaffoldKey,
+      key: context.read<CustomMenuController>().getUploadBannersscaffoldKey,
       drawer: const SideMenu(),
       body: SafeArea(
         child: Row(
@@ -100,7 +102,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                       title: 'Upload Banners',
                       fct: () {
                         context
-                            .read<MenuController>()
+                            .read<CustomMenuController>()
                             .controlUploadBannersMenu();
                       },
                     ),

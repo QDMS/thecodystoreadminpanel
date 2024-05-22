@@ -1,17 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:thecodystoreadminpanel/consts/firebase.dart';
 import 'package:thecodystoreadminpanel/consts/padding.dart';
 import 'package:thecodystoreadminpanel/inner_screens/add_product.dart';
 import 'package:thecodystoreadminpanel/responsive.dart';
-import 'package:thecodystoreadminpanel/services/global_method.dart';
 import 'package:thecodystoreadminpanel/services/utils.dart';
 import 'package:thecodystoreadminpanel/widgets/buttons.dart';
 import 'package:thecodystoreadminpanel/widgets/grid_products.dart';
 import 'package:thecodystoreadminpanel/widgets/header.dart';
-import 'package:thecodystoreadminpanel/widgets/loader.dart';
 import 'package:thecodystoreadminpanel/widgets/orders_list.dart';
 import 'package:thecodystoreadminpanel/widgets/text_widget.dart';
 
@@ -34,7 +29,7 @@ class DashboardScreen extends StatelessWidget {
             Header(
               title: 'Dashboard',
               fct: () {
-                context.read<MenuController>().controlDashboardMenu();
+                context.read<CustomMenuController>().controlDashboardMenu();
               },
             ),
             const SizedBox(

@@ -1,12 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thecodystoreadminpanel/controllers/MenuController.dart';
 import 'package:thecodystoreadminpanel/responsive.dart';
 import 'package:thecodystoreadminpanel/services/utils.dart';
-import 'package:thecodystoreadminpanel/widgets/grid_products.dart';
 import 'package:thecodystoreadminpanel/widgets/header.dart';
-import 'package:thecodystoreadminpanel/widgets/loader.dart';
 import 'package:thecodystoreadminpanel/widgets/orders_list.dart';
 import 'package:thecodystoreadminpanel/widgets/side_menu.dart';
 
@@ -22,7 +21,7 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
   Widget build(BuildContext context) {
     Size size = Utils(context).getScreenSize;
     return Scaffold(
-      key: context.read<MenuController>().getallordersscaffoldKey,
+      key: context.read<CustomMenuController>().getallordersscaffoldKey,
       drawer: const SideMenu(),
       body: SafeArea(
         child: Row(
@@ -48,7 +47,7 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
                     Header(
                       title: 'All Orders',
                       fct: () {
-                        context.read<MenuController>().controlOrdersMenu();
+                        context.read<CustomMenuController>().controlOrdersMenu();
                       },
                     ),
                     const SizedBox(

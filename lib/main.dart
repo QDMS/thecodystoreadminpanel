@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:thecodystoreadminpanel/inner_screens/add_product.dart';
-import 'package:thecodystoreadminpanel/inner_screens/edit_product.dart';
 import 'package:thecodystoreadminpanel/screens/main_screen.dart';
 import 'consts/theme_data.dart';
 import 'controllers/MenuController.dart';
@@ -42,7 +41,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => MenuController(),
+          create: (_) => CustomMenuController(),
         ),
         ChangeNotifierProvider(
           create: (_) {

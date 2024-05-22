@@ -1,8 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:thecodystoreadminpanel/services/utils.dart';
 import 'package:thecodystoreadminpanel/widgets/text_widget.dart';
 
@@ -36,6 +34,7 @@ class OrdersWidget extends StatefulWidget {
 
 class _OrdersWidgetState extends State<OrdersWidget> {
   late String orderDateStr;
+
   @override
   void initState() {
     var postDate = widget.orderDate.toDate();
@@ -43,10 +42,27 @@ class _OrdersWidgetState extends State<OrdersWidget> {
     super.initState();
   }
 
+  Future<void> _deleteOrder() async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('orders')
+          .doc(widget.productId)
+          .delete();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Order deleted successfully')),
+      );
+      setState(() {});
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to delete order: $e')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Utils(context).getTheme;
-    Color color = theme == true ? Colors.white : Colors.black;
+    Color color = theme ? Colors.white : Colors.black;
     Size size = Utils(context).getScreenSize;
 
     return Padding(
@@ -64,23 +80,22 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                 child: CachedNetworkImage(
                   imageUrl: widget.imageUrl,
                   fit: BoxFit.fill,
-                  // height: screenWidth * 0.15,
-                  // width: screenWidth * 0.15,
                 ),
               ),
-              const SizedBox(
-                width: 12,
-              ),
+              const SizedBox(width: 12),
               Expanded(
                 flex: 10,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    TextWidget(text: widget.title, color: color, isTitle: true,),
                     TextWidget(
-                      text:
-                          '${widget.quantity}X For \$${widget.price.toStringAsFixed(2)}',
+                      text: widget.title,
+                      color: color,
+                      isTitle: true,
+                    ),
+                    TextWidget(
+                      text: '${widget.quantity}X For \$${widget.price.toStringAsFixed(2)}',
                       color: color,
                       textSize: 16,
                       isTitle: true,
@@ -110,11 +125,15 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                         ],
                       ),
                     ),
-                    Text(
-                      orderDateStr,
-                    )
+                    Text(orderDateStr),
                   ],
                 ),
+              ),
+              IconButton(
+                icon: Icon(Icons.delete, color: Colors.red, size: 40,),
+                onPressed: () async {
+                  await _deleteOrder();
+                },
               ),
             ],
           ),

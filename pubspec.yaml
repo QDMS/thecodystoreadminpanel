@@ -37,7 +37,7 @@ dependencies:
   provider: ^6.0.2
   shared_preferences: ^2.0.13
   iconly: ^1.0.1
-  cached_network_image: ^3.2.1
+  cached_network_image:
   dotted_border: ^2.0.0+3
   image_picker: ^0.8.7+1
   firebase_core: ^2.8.0
