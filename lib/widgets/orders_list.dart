@@ -33,6 +33,7 @@ class OrdersList extends StatelessWidget {
                       children: [
                         OrdersWidget(
                           title: snapshot.data!.docs[index]['title'],
+                          orderId: snapshot.data!.docs[index]['orderId'],
                           imageUrl: snapshot.data!.docs[index]['imageUrl'],
                           totalPrice: snapshot.data!.docs[index]['totalPrice'],
                           price: snapshot.data!.docs[index]['price'],
@@ -43,6 +44,7 @@ class OrdersList extends StatelessWidget {
                           quantity: snapshot.data!.docs[index]['quantity'],
                           orderDate: snapshot.data!.docs[index]['orderDate'],
                           username: snapshot.data!.docs[index]['username'],
+                          membershipNumber: snapshot.data!.docs[index]['membershipNumber'],
                           // phoneNumber: snapshot.data!.docs[index]
                           //     ['phoneNumber'],
                         ),

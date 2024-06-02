@@ -9,9 +9,11 @@ class OrdersWidget extends StatefulWidget {
     Key? key,
     required this.title,
     required this.price,
+    required this.orderId,
     required this.totalPrice,
     required this.productId,
     required this.userId,
+    required this.membershipNumber,
     required this.imageUrl,
     required this.username,
     required this.phoneNumber,
@@ -21,9 +23,11 @@ class OrdersWidget extends StatefulWidget {
   final double price;
   final double totalPrice;
   final String productId;
+  final String orderId;
   final String userId;
   final String imageUrl;
   final String username;
+  final String membershipNumber;
   final String title;
   final String phoneNumber;
   final int quantity;
@@ -46,10 +50,10 @@ class _OrdersWidgetState extends State<OrdersWidget> {
     try {
       await FirebaseFirestore.instance
           .collection('orders')
-          .doc(widget.productId)
+          .doc(widget.orderId)
           .delete();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Order deleted successfully')),
+        const SnackBar(content: Text('Order deleted successfully')),
       );
       setState(() {});
     } catch (e) {
@@ -57,6 +61,40 @@ class _OrdersWidgetState extends State<OrdersWidget> {
         SnackBar(content: Text('Failed to delete order: $e')),
       );
     }
+  }
+
+  Future<void> _showDeleteConfirmationDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirm Deletion'),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Are you sure you want to delete this order?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Delete'),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                await _deleteOrder();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -95,7 +133,8 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       isTitle: true,
                     ),
                     TextWidget(
-                      text: '${widget.quantity}X For \$${widget.price.toStringAsFixed(2)}',
+                      text:
+                          '${widget.quantity}X For \$${widget.price.toStringAsFixed(2)}',
                       color: color,
                       textSize: 16,
                       isTitle: true,
@@ -122,6 +161,13 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                             textSize: 14,
                             isTitle: true,
                           ),
+                          TextWidget(text: " / ", color: color),
+                          TextWidget(
+                            text: widget.membershipNumber,
+                            color: color,
+                            textSize: 14,
+                            isTitle: true,
+                          ),
                         ],
                       ),
                     ),
@@ -130,9 +176,13 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.delete, color: Colors.red, size: 40,),
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                  size: 40,
+                ),
                 onPressed: () async {
-                  await _deleteOrder();
+                  await _showDeleteConfirmationDialog();
                 },
               ),
             ],
